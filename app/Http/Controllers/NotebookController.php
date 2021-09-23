@@ -10,7 +10,7 @@ class NotebookController extends Controller
     //method GET
     public function index()
     {
-        $notebooks = Notebook::get(['id', 'title', 'body', 'created_at']);
+        $notebooks = Notebook::get(['id', 'title', 'body', 'created_at', 'updated_at']);
         return $this->succesMessage(200, 'succes', $notebooks);
     }
     //method POST
@@ -54,7 +54,7 @@ class NotebookController extends Controller
         return response([
             'status' => $status,
             'message' => $message
-    
+
         ]);
     }
     public function succesMessage($status, $message, $data = [])
