@@ -20,6 +20,7 @@ class UserController extends Controller
         ]);
         $register = $request->all();
         $gambar = $request->file('image')->store('public/image/user');
+        $register['password'] = bcrypt($register['password']);
         $register['image'] = Storage::url($gambar);
         $user = User::create($register);
         return $this->successMessage(201, 'created', $user);
